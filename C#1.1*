@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int age = 44;
+            int money = 1500;
+            char name = 'Bob';
+            string str = "Cool";
+            bool jump = false;
+            bool run = true;
+            float angle = 4.5f;
+            double size = 4.4;
+            char street = 'Forest';
+            int damage = 15;
+            
+        }
+    }
+}
