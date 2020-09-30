@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int money;
+            int crystals;
+            int crystalsPrice = 3;
+            bool enoughMoney;
+            
+
+            Console.WriteLine($"Welcome to Dwarwen Shop! Crystals for {crystalsPrice} coins.");
+            Console.Write("How many coins do you have:");
+            money = Convert.ToInt32(Console.ReadLine());
+            Console.Write("How many crystals you need?");
+            crystals = Convert.ToInt32(Console.ReadLine());
+
+            enoughMoney = money >= crystals * crystalsPrice;
+
+            crystals *= Convert.ToInt32(enoughMoney);
+            money -= crystals * crystalsPrice;
+
+            Console.WriteLine($"In your bag - {crystals} crystals and - {money} money.");
+            Console.ReadKey();
+        }
+    }
+}
