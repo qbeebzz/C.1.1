@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int time;
+            int oldladies;
+            
+            Console.Write("How many oldladies in a line - ");
+            oldladies = Convert.ToInt32(Console.ReadLine());
+            time = oldladies * 10;
+            int hours = time / 60;
+            int min = time % 60;
+
+            Console.WriteLine("Waiting time " + hours + " hours and " + min + " minutes.");
+            Console.ReadKey();
+            
+        }
+    }
+}
