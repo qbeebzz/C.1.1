@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int tryCount = 3;
+            string password = "silence";
+            string userInput;
+
+            for (int i = 0; i < tryCount; i++)
+            {
+                Console.Write("What is the music of life? - ");
+                userInput = Console.ReadLine();
+
+                if (password == userInput)
+                {
+                    Console.WriteLine("Welcome to the dark brotherhood, my brother.");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine((tryCount - i - 1) + " attempts left");
+                    Console.WriteLine("Try again.");
+                }
+            }
+            Console.ReadKey();
+        }
+    }
+}
