@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string message;
+            int amount;
+            Console.Write("Your message - ");
+            message = Console.ReadLine();
+            Console.Write("Amount of your messages - ");
+            amount = Convert.ToInt32(Console.ReadLine());
+
+            while (amount--> 0)
+            {
+                Console.WriteLine(message);      
+            }
+            Console.ReadKey();
+        }
+    }
+}
