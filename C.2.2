@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {            
+            string code = "exit";
+            string userInput;
+
+            for (int i = 1; i <= 5; i++)
+            {
+                
+                Console.Write("Write exit - ");
+                userInput = Console.ReadLine();
+                    if (code == userInput)
+                    {
+                        
+                        Console.WriteLine("Exit");
+                        break;
+                        
+                    }
+            }
+            Console.ReadKey();
+        }
+    }
+}
