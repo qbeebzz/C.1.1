@@ -1,0 +1,154 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            float plnToUsd = 0.26f, plnToEur = 0.22f;
+            float usdToPln = 3.81f, usdToEur = 0.85f;
+            float eurToPln = 4.48f, eurToUsd = 1.18f;
+
+            float pln;
+            float usd;
+            float eur;
+            float currencyCount;
+            string userInput;
+
+
+            for (int i = 0; i <= 0; i--)
+
+            {
+                Console.WriteLine("Welcome to the currency exchange.");
+                Console.WriteLine("You can exchange the following currencies: PLN; USD; EUR.");
+                Console.WriteLine("Write '1' to exchange.");
+                Console.WriteLine("Write '2' to finish.");
+
+                Console.Write("Your choice - ");
+                userInput = Console.ReadLine();
+
+                if (userInput == "2")
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Have a nice day.");
+                    break;
+                }
+
+                if (userInput == "1")
+                {
+
+                    Console.Write("Enter balance PLN - ");
+                    pln = Convert.ToSingle(Console.ReadLine());
+                    Console.Write("Enter balance USD - ");
+                    usd = Convert.ToSingle(Console.ReadLine());
+                    Console.Write("Enter balance EUR - ");
+                    eur = Convert.ToSingle(Console.ReadLine());
+
+                    Console.WriteLine("1 - PLN to USD");
+                    Console.WriteLine("2 - PLN to EUR");
+                    Console.WriteLine("3 - USD to PLN");
+                    Console.WriteLine("4 - USD to EUR");
+                    Console.WriteLine("5 - EUR to PLN");
+                    Console.WriteLine("6 - EUR to USD");
+                    userInput = Console.ReadLine();
+
+                    switch (userInput)
+                    {
+
+                        case "1":
+                            Console.WriteLine("PLN to USD");
+                            Console.Write("Enter amount - ");
+                            currencyCount = Convert.ToSingle(Console.ReadLine());
+                            if (pln >= currencyCount)
+                            {
+                                pln -= currencyCount;
+                                usd += currencyCount * plnToUsd;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid amount");
+                            }
+                            break;
+                        case "2":
+                            Console.WriteLine("PLN to EUR");
+                            Console.Write("Enter amount - ");
+                            currencyCount = Convert.ToSingle(Console.ReadLine());
+                            if (pln >= currencyCount)
+                            {
+                                pln -= currencyCount;
+                                eur += currencyCount * plnToEur;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid amount");
+                            }
+                            break;
+                        case "3":
+                            Console.WriteLine("USD to PLN");
+                            Console.Write("Enter amount - ");
+                            currencyCount = Convert.ToSingle(Console.ReadLine());
+                            if (usd >= currencyCount)
+                            {
+                                usd -= currencyCount;
+                                pln += currencyCount * usdToPln;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid amount");
+                            }
+                            break;
+                        case "4":
+                            Console.WriteLine("USD to EUR");
+                            Console.Write("Enter amount - ");
+                            currencyCount = Convert.ToSingle(Console.ReadLine());
+                            if (usd >= currencyCount)
+                            {
+                                usd -= currencyCount;
+                                eur += currencyCount * usdToEur;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid amount");
+                            }
+                            break;
+                        case "5":
+                            Console.WriteLine("EUR to PLN");
+                            Console.Write("Enter amount - ");
+                            currencyCount = Convert.ToSingle(Console.ReadLine());
+                            if (eur >= currencyCount)
+                            {
+                                eur -= currencyCount;
+                                pln += currencyCount * eurToPln;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid amount");
+                            }
+                            break;
+                        case "6":
+                            Console.WriteLine("EUR to USD");
+                            Console.Write("Enter amount - ");
+                            currencyCount = Convert.ToSingle(Console.ReadLine());
+                            if (eur >= currencyCount)
+                            {
+                                eur -= currencyCount;
+                                usd += currencyCount * eurToUsd;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid amount");
+                            }
+                            break;
+                    }
+                    Console.WriteLine($"Balance: PLN - {pln}; USD - {usd}; EUR - {eur} ");
+                }
+            }
+            Console.ReadKey();
+        }
+    }
+}
