@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string userWord;
+            string userSymbol;
+
+            Console.Write("Write word - ");
+            userWord = Console.ReadLine();
+            Console.Write("Write symbol - ");
+            userSymbol = Console.ReadLine();
+
+            Console.WriteLine($"{userSymbol}{userSymbol}{userSymbol}{userSymbol}{userSymbol}{userSymbol}");
+            Console.WriteLine($"{userSymbol}{userWord}{userSymbol}");
+            Console.WriteLine($"{userSymbol}{userSymbol}{userSymbol}{userSymbol}{userSymbol}{userSymbol}");
+            Console.ReadKey();
+        }
+    }
+}
