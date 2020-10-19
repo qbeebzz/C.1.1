@@ -3,29 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace CSLight
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string code = "exit";
-            string userInput;
-
-            for (int i = 0; i <= 0; i--)
             {
+                string code = "exit";
+                string userInput;
 
-                Console.Write("Write exit - ");
-                userInput = Console.ReadLine();
-                if (code == userInput)
+                int i = 1;
+
+                while (i++>0)
                 {
 
-                    Console.WriteLine("Exit");
-                    break;
-
-                }    
+                    Console.Write("Write exit - ");
+                    userInput = Console.ReadLine();
+                    if (code == userInput)
+                    {
+                        Console.WriteLine("Exit");
+                        break;
+                    }
+                    
+                }
+                Console.ReadKey();
             }
-            Console.ReadKey();
         }
     }
 }
