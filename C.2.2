@@ -11,14 +11,12 @@ namespace CSLight
         static void Main(string[] args)
         {
             {
+                bool exitAct = true;
                 string code = "exit";
                 string userInput;
-
-                int i = 1;
-
-                while (i++>0)
+              
+                while (exitAct)
                 {
-
                     Console.Write("Write exit - ");
                     userInput = Console.ReadLine();
                     if (code == userInput)
@@ -26,7 +24,6 @@ namespace CSLight
                         Console.WriteLine("Exit");
                         break;
                     }
-                    
                 }
                 Console.ReadKey();
             }
