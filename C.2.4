@@ -10,18 +10,32 @@ namespace CSLight_2
     {
         static void Main(string[] args)
         {
-            string userWord;
-            string userSymbol;
+            string word;
+            string symbol;
 
-            Console.Write("Write word - ");
-            userWord = Console.ReadLine();
-            Console.Write("Write symbol - ");
-            userSymbol = Console.ReadLine();
+            Console.Write("Word - ");
+            word = Console.ReadLine();
+            Console.Write("Symbol - ");
+            symbol = Console.ReadLine();
+            
 
-            Console.WriteLine($"{userSymbol}{userSymbol}{userSymbol}{userSymbol}{userSymbol}{userSymbol}");
-            Console.WriteLine($"{userSymbol}{userWord}{userSymbol}");
-            Console.WriteLine($"{userSymbol}{userSymbol}{userSymbol}{userSymbol}{userSymbol}{userSymbol}");
+            int line = (word.Length) + 4;
+            string firstLine = "";
+            string thirdLine = "";
+
+            for (int i = 1; i <= line; i++)
+            {
+                firstLine += symbol;
+                thirdLine += symbol;
+            }
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(firstLine);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{symbol}{symbol}{word}{symbol}{symbol}");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(thirdLine);
             Console.ReadKey();
-        }
+        }  
     }
 }
