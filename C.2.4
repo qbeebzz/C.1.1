@@ -4,38 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace CSLight_2
 {
-    class Program
-    {
-        static void Main(string[] args)
+        class Program
         {
-            string word;
-            string symbol;
-
-            Console.Write("Word - ");
-            word = Console.ReadLine();
-            Console.Write("Symbol - ");
-            symbol = Console.ReadLine();
-            
-
-            int line = (word.Length) + 4;
-            string firstLine = "";
-            string thirdLine = "";
-
-            for (int i = 1; i <= line; i++)
+            static void Main(string[] args)
             {
-                firstLine += symbol;
-                thirdLine += symbol;
+                string word;
+                string symbol;
+
+                Console.Write("Word - ");
+                word = Console.ReadLine();
+                Console.Write("Symbol - ");
+                symbol = Console.ReadLine();
+
+
+                int lineLenght = (word.Length) + 4;
+                string firstAndThirdLine = "";
+                
+                for (int i = 1; i <= lineLenght; i++)
+                {
+                    firstAndThirdLine += symbol;
+                    
+                }
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(firstAndThirdLine);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{symbol}{symbol}{word}{symbol}{symbol}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(firstAndThirdLine);
+                Console.ReadKey();
             }
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(firstLine);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{symbol}{symbol}{word}{symbol}{symbol}");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(thirdLine);
-            Console.ReadKey();
-        }  
-    }
+        }
 }
+    
