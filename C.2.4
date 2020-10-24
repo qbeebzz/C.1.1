@@ -7,36 +7,35 @@ using System.Threading.Tasks;
 
 namespace CSLight_2
 {
-        class Program
+    class Program
+    {
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
+            string word;
+            string symbol;
+
+            Console.Write("Word - ");
+            word = Console.ReadLine();
+            Console.Write("Symbol - ");
+            symbol = Console.ReadLine();
+
+
+            int lineLenght = (word.Length) + 4;
+            string line = "";
+
+            for (int i = 1; i <= lineLenght; i++)
             {
-                string word;
-                string symbol;
+                line += symbol;
 
-                Console.Write("Word - ");
-                word = Console.ReadLine();
-                Console.Write("Symbol - ");
-                symbol = Console.ReadLine();
-
-
-                int lineLenght = (word.Length) + 4;
-                string firstAndThirdLine = "";
-                
-                for (int i = 1; i <= lineLenght; i++)
-                {
-                    firstAndThirdLine += symbol;
-                    
-                }
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(firstAndThirdLine);
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"{symbol}{symbol}{word}{symbol}{symbol}");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(firstAndThirdLine);
-                Console.ReadKey();
             }
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(line);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{symbol}{symbol}{word}{symbol}{symbol}");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(line);
+            Console.ReadKey();
         }
+    }
 }
-    
