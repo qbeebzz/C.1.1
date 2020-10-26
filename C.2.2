@@ -11,19 +11,14 @@ namespace CSLight
         static void Main(string[] args)
         {
             {
-                bool exitAct = true;
-                string code = "exit";
-                string userInput;
-              
-                while (exitAct)
+                string userInput = "";
+
+                Console.Write("Write exit - ");
+
+                while (userInput != "exit")
                 {
-                    Console.Write("Write exit - ");
                     userInput = Console.ReadLine();
-                    if (code == userInput)
-                    {
-                        Console.WriteLine("Exit");
-                        break;
-                    }
+                    
                 }
                 Console.ReadKey();
             }
