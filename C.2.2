@@ -10,16 +10,17 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            bool programm = true;
+            
+            bool programmIsRunning = true;
 
-            while (programm)
+            while (programmIsRunning)
             {
                 Console.Write("Input 'exit' - ");
                 string userInput = Console.ReadLine();
 
                 if (userInput == "exit")
                 {
-                    programm = false;
+                    programmIsRunning = false;
                     Console.WriteLine("Exit!");
                 }
                 else
