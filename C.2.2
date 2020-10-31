@@ -10,22 +10,22 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            bool exit = true;
-            
-            while (exit)
+            bool programm = true;
+
+            while (programm)
             {
                 Console.Write("Input 'exit' - ");
-                string userInput = Console.ReadLine(); 
+                string userInput = Console.ReadLine();
 
                 if (userInput == "exit")
                 {
-                    exit = false;
+                    programm = false;
                     Console.WriteLine("Exit!");
                 }
                 else
                 {
                     Console.WriteLine("It's not exit!");
-                }          
+                }
             }
             Console.ReadKey();
         }
