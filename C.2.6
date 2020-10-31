@@ -1,0 +1,380 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Remoting.Services;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int randomInt;
+
+            bool welcome = true;
+            bool reg = true;
+            bool log = true;
+            bool edit = true;
+            bool profile = true;
+            bool passwordCheck = true;
+            bool game = true;
+            bool playAgain = true;
+
+
+            string inputPlayer = "null";
+            string inputCPU = "null";
+            string login = "null";
+            string password = "null";
+            string email = "null";
+
+            while (welcome)
+            {
+                reg = true;
+                log = true;
+                edit = true;
+                profile = true;
+                game = true;
+
+                Console.Clear();
+                Console.WriteLine("Welcome.\nFor login, press '1'");
+                Console.WriteLine("For registration, press '2'");
+                Console.WriteLine("For exit, press '0'");
+                string choiceWelcome = Console.ReadLine();
+
+                switch (choiceWelcome)
+                {
+                    case "1":
+                        while (log)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Login");
+                            bool loginCheck = (login == Console.ReadLine());
+
+                            Console.WriteLine("Password");
+                            loginCheck = (password == Console.ReadLine());
+
+                            if (!loginCheck)
+                            {
+                                
+                                Console.WriteLine("Incorrect login or password");
+                                Console.WriteLine("Press any key to return");
+                                Console.ReadKey();
+                                break;
+                            }
+
+                            if (loginCheck)
+                            {
+                                while (profile)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("Welcome to Profile");
+                                    Console.WriteLine("Info your Profile, press '1'");
+                                    Console.WriteLine("Edit Profile, press '2'");
+                                    Console.WriteLine("Edit text, press '3'");
+                                    Console.WriteLine("Edit background, press'4'");
+                                    Console.WriteLine("Play in game, press '5'");
+                                    Console.WriteLine("Logout, press '6'");
+                                    Console.WriteLine("Exit, press '0'");
+                                    string choiceProfile = Console.ReadLine();
+                                    edit = true;
+
+                                    switch (choiceProfile)
+                                    {
+                                        case "1":
+                                            Console.Clear();
+                                            Console.WriteLine($"Login {login}");
+                                            Console.WriteLine($"Password {password}");
+                                            Console.WriteLine($"Email {email}");
+                                            Console.ReadKey();
+                                            break;
+                                        case "2":
+                                            while (edit)
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine("Change login '1'");
+                                                Console.WriteLine("Change password '2'");
+                                                Console.WriteLine("Change email '3'");
+                                                Console.WriteLine("Return to Profile '4'");
+                                                string choiceEdit = (Console.ReadLine());
+
+                                                switch (choiceEdit)
+                                                {
+                                                    case "1":
+                                                        Console.WriteLine("Enter new login");
+                                                        login = Console.ReadLine();
+                                                        break;
+                                                    case "2":
+                                                        passwordCheck = true;
+                                                        while (passwordCheck)
+                                                        {
+                                                            Console.Clear();
+                                                            Console.WriteLine("Enter new password");
+                                                            password = Console.ReadLine();
+
+                                                            Console.WriteLine("Confirm new password");
+                                                            passwordCheck = (password == Console.ReadLine());
+
+                                                            if (!passwordCheck)
+                                                            {
+                                                                Console.WriteLine("Incorrect password");
+                                                                passwordCheck = true;
+                                                                Console.ReadKey();
+                                                            }
+                                                            else
+                                                            {
+                                                                break;
+                                                            }
+                                                        }
+                                                        break;
+                                                    case "3":
+                                                        Console.WriteLine("Enter new email");
+                                                        email = Console.ReadLine();
+                                                        break;
+                                                    case "4":
+                                                        edit = false;
+                                                        break;
+                                                    default:
+                                                        edit = false;
+                                                        Console.WriteLine("Incorrect");
+                                                        Console.WriteLine("Press any key for return");
+                                                        Console.ReadKey();
+                                                        break;
+                                                }
+                                            }
+
+                                            break;
+                                        case "3":
+                                            Console.Clear();
+                                            Console.WriteLine("Choose your color");
+                                            Console.WriteLine("Red, press '1'");
+                                            Console.WriteLine("Green, press '2'");
+                                            Console.WriteLine("Yellow, press '3'");
+                                            Console.WriteLine("Blue, press '4'");
+                                            Console.WriteLine("Return to profile '5'");
+                                            string textColor = Console.ReadLine();
+                                          
+                                            switch (textColor)
+                                            {
+                                                case "1":
+                                                    Console.ForegroundColor = ConsoleColor.Red;
+                                                    break;
+                                                case "2":
+                                                    Console.ForegroundColor = ConsoleColor.Green;
+                                                    break;
+                                                case "3":
+                                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                                    break;
+                                                case "4":
+                                                    Console.ForegroundColor = ConsoleColor.Blue;
+                                                    break;
+                                                case "5":
+                                                    break;
+                                                default:
+                                                    Console.WriteLine("Incorrect command");
+                                                    Console.WriteLine("Press any key for return to Profile");
+                                                    Console.ReadKey();
+                                                    break;
+                                            }
+                                            break;
+                                        case "4":
+                                            Console.Clear();
+                                            Console.WriteLine("Choose your color");
+                                            Console.WriteLine("Red, press '1'");
+                                            Console.WriteLine("Green, press '2'");
+                                            Console.WriteLine("Yellow, press '3'");
+                                            Console.WriteLine("Blue, press '4'");
+                                            Console.WriteLine("Return to profile '5'");
+                                            string backColor = Console.ReadLine();
+
+                                            switch (backColor)
+                                            {
+                                                case "1":
+                                                    Console.BackgroundColor = ConsoleColor.Red;
+                                                    break;
+                                                case "2":
+                                                    Console.BackgroundColor = ConsoleColor.Green;
+                                                    break;
+                                                case "3":
+                                                    Console.BackgroundColor = ConsoleColor.Yellow;
+                                                    break;
+                                                case "4":
+                                                    Console.BackgroundColor = ConsoleColor.Blue;
+                                                    break;
+                                                case "5":
+                                                    break;
+                                                default:
+                                                    Console.WriteLine("Incorrect command");
+                                                    Console.WriteLine("Press any key for return to Profile");
+                                                    Console.ReadKey();
+                                                    break;
+                                            }
+                                            break;
+                                        case "5":
+                                            Console.Clear();
+                                            while (playAgain)
+                                            {
+                                                int scorePlayer = 0;
+                                                int scoreCPU = 0;
+
+                                                while (scorePlayer < 3 && scoreCPU < 3)
+                                                {
+                                                    Console.Write("Choose:\nROCK, press '1'\nPAPER press '2'\nSCISSORS, press '3'\nYour Choice -    ");
+                                                    inputPlayer = Console.ReadLine();
+                                                    inputPlayer = inputPlayer.ToUpper();
+
+                                                    Random rand = new Random();
+
+                                                    randomInt = rand.Next(1, 4);
+
+                                                    switch (randomInt)
+                                                    {
+                                                        case 1:
+                                                            inputCPU = "ROCK";
+                                                            Console.WriteLine("\nCPU chose ROCK");
+                                                            if(inputPlayer == "1")
+                                                            {
+                                                                Console.WriteLine("DRAW!\n");
+                                                            }
+                                                            else if (inputPlayer == "2")
+                                                            {
+                                                                Console.WriteLine("PLAYER WINS!\n");
+                                                                scorePlayer++;
+                                                            }
+                                                            else if (inputPlayer == "3")
+                                                            {
+                                                                Console.WriteLine("CPU WINS!\n");
+                                                                scoreCPU++;
+                                                            }
+                                                            break;
+                                                        case 2:
+                                                            inputCPU = "PAPER";
+                                                            Console.WriteLine("\nCPU chose PAPER");
+                                                            if(inputPlayer == "2")
+                                                            {
+                                                                Console.WriteLine("DRAW!\n");
+                                                            }
+                                                            else if(inputPlayer == "1")
+                                                            {
+                                                                Console.WriteLine("CPU WINS");
+                                                                scoreCPU++;
+                                                            }
+                                                            else if(inputPlayer == "3")
+                                                            {
+                                                                Console.WriteLine("PLAYER WINS!\n");
+                                                                scorePlayer++;
+                                                            }
+                                                            break;
+                                                        case 3:
+                                                            inputCPU = "SCISSORS";
+                                                            Console.WriteLine("\nCPU chose SCISSORS");
+                                                            if (inputPlayer == "3")
+                                                            {
+                                                                Console.WriteLine("DRAW!\n");
+                                                            }
+                                                            else if (inputPlayer == "1")
+                                                            {
+                                                                Console.WriteLine("PLAYER WINS!\n");
+                                                                scorePlayer++;
+                                                            }
+                                                            else if (inputPlayer == "2")
+                                                            {
+                                                                Console.WriteLine("CPU WINS!\n");
+                                                                scoreCPU++;
+                                                            }
+                                                            break;
+                                                        default:
+                                                            Console.Write("Incorrect command!");
+                                                            break;
+                                                    }
+                                                    Console.WriteLine($"******\nSCORES!\nPLAYER:{scorePlayer}\nCPU:{scoreCPU}\n******\n");
+                                                }
+                                                if (scorePlayer == 3)
+                                                {
+                                                    Console.WriteLine("``````\nPLAYER WON!\n``````\n");
+                                                }
+                                                else if (scoreCPU == 3)
+                                                {
+                                                    Console.WriteLine("``````\nCPU WON!\n``````\n");
+                                                }
+                                               
+                                                Console.WriteLine("\nPlay again, press '1'\nExit, press '2'");
+                                                string loop = Console.ReadLine();
+                                                if (loop == "1")
+                                                {
+                                                    playAgain = true;
+                                                    Console.Clear();
+                                                }
+                                                else if (loop == "2")
+                                                {
+                                                    
+                                                    break;
+                                                }
+                                               
+                                            }
+                                            break;
+                                        case "6":
+                                            profile = false;
+                                            log = false;
+                                            break;
+                                        case "0":
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                            Console.WriteLine("Have a nice day!");
+                                            welcome = false;
+                                            profile = false;
+                                            log = false;
+                                            break;
+                                        default:
+                                            break;
+
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Incorrect login or password");
+                                Console.ReadKey();
+                            }
+                        }
+                        break;
+                    case "2":
+                        while (reg)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Enter login");
+                            login = Console.ReadLine();
+
+                            Console.WriteLine("Enter password");
+                            password = Console.ReadLine();
+
+                            Console.WriteLine("Confirm password");
+                            passwordCheck = (password == Console.ReadLine());
+
+                            Console.WriteLine("Enter email");
+                            email = Console.ReadLine();
+
+                            Console.WriteLine("Registration complete");
+                            Console.WriteLine("Press any key");
+
+                            reg = false;
+
+                            if (!passwordCheck)
+                            {
+                                Console.WriteLine("Incorrect password");
+                                reg = true;
+                            }
+                            Console.ReadKey();
+                        }
+                        break;
+                    case "0":
+                        welcome = false;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Have a nice day!");
+                        break;
+                }
+            }
+            Console.ReadKey();
+        }
+    }
+}
