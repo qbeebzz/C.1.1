@@ -19,10 +19,10 @@ namespace CSLight
             float eur;
             float currencyCount;
             string userInput;
-            bool exchangeProgram = true;
+            bool exchangeProgramIsRunning = true;
 
 
-            while (exchangeProgram)
+            while (exchangeProgramIsRunning)
 
             {
                 Console.WriteLine("Welcome to the currency exchange.");
@@ -35,7 +35,7 @@ namespace CSLight
 
                 if (userInput == "2")
                 {
-                    exchangeProgram = false;
+                    exchangeProgramIsRunning = false;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Have a nice day.");
 
