@@ -13,29 +13,29 @@ namespace CSLight
         {
             int randomInt;
 
-            bool welcome = true;
-            bool reg = true;
-            bool log = true;
-            bool edit = true;
-            bool profile = true;
+            bool commandWelcome = true;
+            bool commandRegistration = true;
+            bool commandLogin = true;
+            bool commandEdit = true;
+            bool commandProfile = true;
             bool passwordCheck = true;
-            bool game = true;
+            bool commandGame = true;
             bool playAgain = true;
 
 
-            string inputPlayer = "null";
-            string inputCPU = "null";
-            string login = "null";
-            string password = "null";
-            string email = "null";
+            string inputPlayer = null;
+            string inputCPU = null;
+            string login = null;
+            string password = null;
+            string email = null;
 
-            while (welcome)
+            while (commandWelcome)
             {
-                reg = true;
-                log = true;
-                edit = true;
-                profile = true;
-                game = true;
+                commandRegistration = true;
+                commandLogin = true;
+                commandEdit = true;
+                commandProfile = true;
+                commandGame = true;
 
                 Console.Clear();
                 Console.WriteLine("Welcome.\nFor login, press '1'");
@@ -46,7 +46,7 @@ namespace CSLight
                 switch (choiceWelcome)
                 {
                     case "1":
-                        while (log)
+                        while (commandLogin)
                         {
                             Console.Clear();
                             Console.WriteLine("Login");
@@ -66,7 +66,7 @@ namespace CSLight
 
                             if (loginCheck)
                             {
-                                while (profile)
+                                while (commandProfile)
                                 {
                                     Console.Clear();
                                     Console.WriteLine("Welcome to Profile");
@@ -78,7 +78,7 @@ namespace CSLight
                                     Console.WriteLine("Logout, press '6'");
                                     Console.WriteLine("Exit, press '0'");
                                     string choiceProfile = Console.ReadLine();
-                                    edit = true;
+                                    commandEdit = true;
 
                                     switch (choiceProfile)
                                     {
@@ -90,7 +90,7 @@ namespace CSLight
                                             Console.ReadKey();
                                             break;
                                         case "2":
-                                            while (edit)
+                                            while (commandEdit)
                                             {
                                                 Console.Clear();
                                                 Console.WriteLine("Change login '1'");
@@ -133,10 +133,10 @@ namespace CSLight
                                                         email = Console.ReadLine();
                                                         break;
                                                     case "4":
-                                                        edit = false;
+                                                        commandEdit = false;
                                                         break;
                                                     default:
-                                                        edit = false;
+                                                        commandEdit = false;
                                                         Console.WriteLine("Incorrect");
                                                         Console.WriteLine("Press any key for return");
                                                         Console.ReadKey();
@@ -315,15 +315,15 @@ namespace CSLight
                                             }
                                             break;
                                         case "6":
-                                            profile = false;
-                                            log = false;
+                                            commandProfile = false;
+                                            commandLogin = false;
                                             break;
                                         case "0":
                                             Console.ForegroundColor = ConsoleColor.Red;
                                             Console.WriteLine("Have a nice day!");
-                                            welcome = false;
-                                            profile = false;
-                                            log = false;
+                                            commandWelcome = false;
+                                            commandProfile = false;
+                                            commandLogin = false;
                                             break;
                                         default:
                                             break;
@@ -339,7 +339,7 @@ namespace CSLight
                         }
                         break;
                     case "2":
-                        while (reg)
+                        while (commandRegistration)
                         {
                             Console.Clear();
                             Console.WriteLine("Enter login");
@@ -357,18 +357,18 @@ namespace CSLight
                             Console.WriteLine("Registration complete");
                             Console.WriteLine("Press any key");
 
-                            reg = false;
+                            commandRegistration = false;
 
                             if (!passwordCheck)
                             {
                                 Console.WriteLine("Incorrect password");
-                                reg = true;
+                                commandRegistration = true;
                             }
                             Console.ReadKey();
                         }
                         break;
                     case "0":
-                        welcome = false;
+                        commandWelcome = false;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Have a nice day!");
                         break;
