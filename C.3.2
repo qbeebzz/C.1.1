@@ -18,17 +18,17 @@ namespace CSLight
 
             int[,] array = new int[10, 10];
 
-            for(int i = 0; i <array.GetLength(0); i++)
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                for(int j = 0; j < array.GetLength(0); j++)
+                for (int j = 0; j < array.GetLength(0); j++)
                 {
                     array[i, j] = rand.Next(10, 100);
                 }
             }
 
-            for(int i = 0; i < array.GetLength(0); i++)
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                for(int j = 0; j <array.GetLength(0); j++)
+                for (int j = 0; j < array.GetLength(0); j++)
                 {
                     Console.Write(array[i, j] + " ");
                 }
@@ -38,17 +38,18 @@ namespace CSLight
             {
                 for (int j = 0; j < array.GetLength(0); j++)
                 {
-                    if(maxElement < array[i, j])
+                    if (maxElement < array[i, j])
                     {
                         maxElement = array[i, j];
                         line = i;
                         column = j;
                     }
-                }
-                array[line, column] = 0;
+                }              
             }
+
+            array[line, column] = 0;
             Console.WriteLine($"\nMax - {maxElement}");
-            
+
         }
     }
 }
