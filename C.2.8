@@ -193,6 +193,7 @@ namespace CSLight
                     }
                     if (bossHP <= 0)
                     {
+                        Console.ReadKey();
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Boss is dead!");
@@ -231,6 +232,7 @@ namespace CSLight
                     }
                     if (playerHP <= 0)
                     {
+                        Console.ReadKey();
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("\n†††††††††\nYou are dead!\n†††††††††");
