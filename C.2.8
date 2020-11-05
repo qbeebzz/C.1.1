@@ -1,0 +1,271 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random randBossDamage = new Random();
+            Random randSacrifice = new Random();
+            Random randArrowDamage = new Random();
+            Random randHeal = new Random();
+            Random randRay = new Random();
+
+            string userInput = null;
+            string loop = null;
+
+            bool playAgain = true;
+
+            while (playAgain)
+            {
+                int playerHP = 100;
+                int playerMP = 100;
+                int bossHP = 350;
+                int rayCharges = 0;
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("There is boss in front of your face!!!");
+                Console.WriteLine("Press any key...");
+
+                while (playerHP > 0 && bossHP > 0)
+                {
+                    int bossDamage = randBossDamage.Next(5, 12);
+                    int sacrifice = randSacrifice.Next(10, 20);
+                    int arrowDamage = randArrowDamage.Next(5, 30);
+                    int heal = randHeal.Next(20, 40);
+                    int ray = randRay.Next(7, 14);
+
+
+                    Console.ReadKey();
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"HP {playerHP}");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($"\nMP {playerMP}");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"\nBOSS {bossHP}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\nYour skills:");
+                    Console.WriteLine($"\nq - Firearrow - Deals damage from 5 to 20 HP. (5 MP)" +
+                                      $"\nw - Charges - Creates charges for Ray. (3 MP)" +
+                                      $"\ne - Ray - Deals damage depending on the number of charges. One charge from 7 to 14 HP. (15 MP). Charges - ({rayCharges})" +
+                                      $"\nr - Heal - Heals 20 to 40 HP. (5 MP)" +
+                                      $"\nt - Sacrifice - Lose HP and restore MP from 10 to 20 HP. (10 HP)");
+
+                    Console.WriteLine("\nFight log:");
+                    userInput = Console.ReadLine();
+
+                    if (userInput == "q")
+                    {
+                        if (playerMP >= 5)
+                        {
+                            Console.WriteLine("Firearrow");
+                            playerMP -= 5;
+                            bossHP -= arrowDamage;
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("\nFirearrow takes damage - " + arrowDamage);
+                            playerHP -= bossDamage;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nBoss takes damage - " + bossDamage);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\nPress any key...");
+                        }
+                        else if (playerMP <= 5)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine("\nNeed more MP");
+                            playerHP -= bossDamage;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nBoss takes damage - " + bossDamage);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\nPress any key...");
+                        }
+                    }
+                    else if (userInput == "w")
+                    {
+                        if (playerMP >= 3)
+                        {
+                            Console.WriteLine("Charges for ray");
+                            rayCharges += 1;
+                            playerMP -= 3;
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("\nAmount charges - " + rayCharges);
+                            playerHP -= bossDamage;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nBoss takes damage - " + bossDamage);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\nPress any key...");
+                        }
+                        else if (playerMP <= 3)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine("\nNeed more MP");
+                            playerHP -= bossDamage;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nBoss takes damage - " + bossDamage);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\nPress any key...");
+                        }
+                    }
+                    else if (userInput == "e")
+                    {
+                        if (playerMP >= 15)
+                        {
+                            if (rayCharges > 0)
+                            {
+                                Console.WriteLine("Ray");
+                                playerMP -= 15;
+                                bossHP -= rayCharges * ray;
+                                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                Console.WriteLine("\nRay takes damage - " + rayCharges * ray);
+                                rayCharges = 0;
+                                playerHP -= bossDamage;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\nBoss takes damage - " + bossDamage);
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("\nPress any key...");
+                            }
+                            else if (rayCharges <= 0)
+                            {
+
+                                Console.WriteLine("\nYou don't have charges");
+                                playerHP -= bossDamage;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\nBoss takes damage - " + bossDamage);
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("\nPress any key...");
+                            }
+                        }
+                        else if (playerMP <= 15)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine("\nNeed more MP");
+                            playerHP -= bossDamage;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nBoss takes damage - " + bossDamage);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\nPress any key...");
+                        }
+                    }
+                    else if (userInput == "r")
+                    {
+                        if (playerMP >= 5)
+                        {
+                            Console.WriteLine("Heal");
+                            playerMP -= 5;
+                            playerHP += heal;
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("\nRestore HP - " + heal);
+                            playerHP -= bossDamage;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nBoss takes damage - " + bossDamage);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\nPress any key...");
+                        }
+                        else if (playerMP <= 5)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine("\nNeed more MP");
+                            playerHP -= bossDamage;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nBoss takes damage - " + bossDamage);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\nPress any key...");
+                        }
+                    }
+                    else if (userInput == "t")
+                    {
+                        Console.WriteLine("Sacrifice");
+                        playerHP -= 10;
+                        playerMP += sacrifice;
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        Console.WriteLine("\nRestore MP - " + sacrifice);
+                        playerHP -= bossDamage;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nBoss takes damage - " + bossDamage);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("\nPress any key...");
+                    }
+                    if (bossHP <= 0)
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Boss is dead!");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Boss is dead!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Boss is dead!");                        
+                        Console.WriteLine("\nPlay again (y/n)");
+                        loop = Console.ReadLine();
+                        if(loop == "y")
+                        {
+                            playAgain = true;
+                            Console.Clear();
+                        }
+                        else if (loop == "n")
+                        {
+                            playAgain = false;                                                        
+                        }
+                        else
+                        {
+                            while (loop != "n" && loop != "y")
+                            {
+                                Console.WriteLine("\nPlay again (y/n)");
+                                loop = Console.ReadLine();
+                                if (loop == "y")
+                                {
+                                    playAgain = true;
+                                    Console.Clear();
+                                }
+                                else if (loop == "n")
+                                {
+                                    playAgain = false;                                   
+                                }
+                            }
+                        }                        
+                    }
+                    if (playerHP <= 0)
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("\n†††††††††\nYou are dead!\n†††††††††");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("\nPlay again (y/n)");
+                        loop = Console.ReadLine();
+                        if (loop == "y")
+                        {
+                            playAgain = true;
+                            Console.Clear();
+                        }
+                        else if (loop == "n")
+                        {
+                            playAgain = false;                          
+                        }
+                        else 
+                        {
+                            while (loop != "n" && loop != "y")
+                            {
+                                Console.WriteLine("\nPlay again (y/n)");
+                                loop = Console.ReadLine();
+                                if (loop == "y")
+                                {
+                                    playAgain = true;
+                                    Console.Clear();
+                                }
+                                else if (loop == "n")
+                                {
+                                    playAgain = false;                                   
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
