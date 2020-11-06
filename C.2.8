@@ -11,7 +11,7 @@ namespace CSLight
         static void Main(string[] args)
         {
             Random rand = new Random();
-            
+
             string userInput = null;
             string loop = null;
 
@@ -63,7 +63,7 @@ namespace CSLight
 
                     if (userInput == "q")
                     {
-                        if (playerMP >= 5)
+                        if (playerMP >= firearrowCost)
                         {
                             Console.WriteLine("Firearrow");
                             playerMP -= firearrowCost;
@@ -76,7 +76,7 @@ namespace CSLight
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\nPress any key...");
                         }
-                        else if (playerMP <= 5)
+                        else if (playerMP <= firearrowCost)
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("\nNeed more MP");
@@ -89,7 +89,7 @@ namespace CSLight
                     }
                     else if (userInput == "w")
                     {
-                        if (playerMP >= 3)
+                        if (playerMP >= chargesCost)
                         {
                             Console.WriteLine("Charges for ray");
                             playerMP -= chargesCost;
@@ -102,7 +102,7 @@ namespace CSLight
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\nPress any key...");
                         }
-                        else if (playerMP <= 3)
+                        else if (playerMP <= chargesCost)
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("\nNeed more MP");
@@ -115,7 +115,7 @@ namespace CSLight
                     }
                     else if (userInput == "e")
                     {
-                        if (playerMP >= 15)
+                        if (playerMP >= rayCost)
                         {
                             if (rayCharges > 0)
                             {
@@ -142,7 +142,7 @@ namespace CSLight
                                 Console.WriteLine("\nPress any key...");
                             }
                         }
-                        else if (playerMP <= 15)
+                        else if (playerMP <= rayCost)
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("\nNeed more MP");
@@ -155,7 +155,7 @@ namespace CSLight
                     }
                     else if (userInput == "r")
                     {
-                        if (playerMP >= 5)
+                        if (playerMP >= healCost)
                         {
                             Console.WriteLine("Heal");
                             playerMP -= healCost;
@@ -168,7 +168,7 @@ namespace CSLight
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\nPress any key...");
                         }
-                        else if (playerMP <= 5)
+                        else if (playerMP <= healCost)
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("\nNeed more MP");
@@ -201,17 +201,17 @@ namespace CSLight
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Boss is dead!");
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("Boss is dead!");                        
+                        Console.WriteLine("Boss is dead!");
                         Console.WriteLine("\nPlay again (y/n)");
                         loop = Console.ReadLine();
-                        if(loop == "y")
+                        if (loop == "y")
                         {
                             playAgain = true;
                             Console.Clear();
                         }
                         else if (loop == "n")
                         {
-                            playAgain = false;                                                        
+                            playAgain = false;
                         }
                         else
                         {
@@ -226,11 +226,11 @@ namespace CSLight
                                 }
                                 else if (loop == "n")
                                 {
-                                    playAgain = false;                                   
+                                    playAgain = false;
                                 }
                             }
                         }
-                        
+
                     }
                     if (playerHP <= 0)
                     {
@@ -248,9 +248,9 @@ namespace CSLight
                         }
                         else if (loop == "n")
                         {
-                            playAgain = false;                          
+                            playAgain = false;
                         }
-                        else 
+                        else
                         {
                             while (loop != "n" && loop != "y")
                             {
@@ -263,7 +263,7 @@ namespace CSLight
                                 }
                                 else if (loop == "n")
                                 {
-                                    playAgain = false;                                   
+                                    playAgain = false;
                                 }
                             }
                         }
