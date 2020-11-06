@@ -10,12 +10,8 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            Random randBossDamage = new Random();
-            Random randSacrifice = new Random();
-            Random randArrowDamage = new Random();
-            Random randHeal = new Random();
-            Random randRay = new Random();
-
+            Random rand = new Random();
+            
             string userInput = null;
             string loop = null;
 
@@ -34,12 +30,17 @@ namespace CSLight
 
                 while (playerHP > 0 && bossHP > 0)
                 {
-                    int bossDamage = randBossDamage.Next(5, 12);
-                    int sacrifice = randSacrifice.Next(10, 20);
-                    int arrowDamage = randArrowDamage.Next(5, 30);
-                    int heal = randHeal.Next(20, 40);
-                    int ray = randRay.Next(7, 14);
+                    int bossDamage = rand.Next(5, 12);
+                    int sacrifice = rand.Next(10, 20);
+                    int arrowDamage = rand.Next(5, 30);
+                    int heal = rand.Next(20, 40);
+                    int ray = rand.Next(7, 14);
 
+                    int firearrowCost = 5;
+                    int chargesCost = 3;
+                    int rayCost = 15;
+                    int healCost = 5;
+                    int sacrificeCost = 10;
 
                     Console.ReadKey();
                     Console.Clear();
@@ -51,11 +52,11 @@ namespace CSLight
                     Console.WriteLine($"\nBOSS {bossHP}");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("\nYour skills:");
-                    Console.WriteLine($"\nq - Firearrow - Deals damage from 5 to 20 HP. (5 MP)" +
-                                      $"\nw - Charges - Creates charges for Ray. (3 MP)" +
-                                      $"\ne - Ray - Deals damage depending on the number of charges. One charge from 7 to 14 HP. (15 MP). Charges - ({rayCharges})" +
-                                      $"\nr - Heal - Heals 20 to 40 HP. (5 MP)" +
-                                      $"\nt - Sacrifice - Lose HP and restore MP from 10 to 20 HP. (10 HP)");
+                    Console.WriteLine($"\nq - Firearrow - Deals damage {arrowDamage} HP. ({firearrowCost} MP)" +
+                                      $"\nw - Charges - Creates charges for Ray. ({chargesCost} MP)" +
+                                      $"\ne - Ray - Deals damage depending on the number of charges. One charge {ray} HP. ({rayCost} MP). Charges - ({rayCharges})" +
+                                      $"\nr - Heal - Heals {heal} HP. ({healCost} MP)" +
+                                      $"\nt - Sacrifice - Lose HP and restore {sacrifice} MP. ({sacrificeCost} HP)");
 
                     Console.WriteLine("\nFight log:");
                     userInput = Console.ReadLine();
@@ -65,7 +66,7 @@ namespace CSLight
                         if (playerMP >= 5)
                         {
                             Console.WriteLine("Firearrow");
-                            playerMP -= 5;
+                            playerMP -= firearrowCost;
                             bossHP -= arrowDamage;
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("\nFirearrow takes damage - " + arrowDamage);
@@ -91,8 +92,8 @@ namespace CSLight
                         if (playerMP >= 3)
                         {
                             Console.WriteLine("Charges for ray");
+                            playerMP -= chargesCost;
                             rayCharges += 1;
-                            playerMP -= 3;
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("\nAmount charges - " + rayCharges);
                             playerHP -= bossDamage;
@@ -119,7 +120,7 @@ namespace CSLight
                             if (rayCharges > 0)
                             {
                                 Console.WriteLine("Ray");
-                                playerMP -= 15;
+                                playerMP -= rayCost;
                                 bossHP -= rayCharges * ray;
                                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                                 Console.WriteLine("\nRay takes damage - " + rayCharges * ray);
@@ -157,7 +158,7 @@ namespace CSLight
                         if (playerMP >= 5)
                         {
                             Console.WriteLine("Heal");
-                            playerMP -= 5;
+                            playerMP -= healCost;
                             playerHP += heal;
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.WriteLine("\nRestore HP - " + heal);
@@ -181,7 +182,7 @@ namespace CSLight
                     else if (userInput == "t")
                     {
                         Console.WriteLine("Sacrifice");
-                        playerHP -= 10;
+                        playerHP -= sacrificeCost;
                         playerMP += sacrifice;
                         Console.ForegroundColor = ConsoleColor.DarkMagenta;
                         Console.WriteLine("\nRestore MP - " + sacrifice);
@@ -228,7 +229,8 @@ namespace CSLight
                                     playAgain = false;                                   
                                 }
                             }
-                        }                        
+                        }
+                        
                     }
                     if (playerHP <= 0)
                     {
