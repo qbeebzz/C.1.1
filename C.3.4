@@ -1,57 +1,57 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class IsDigitSample
+namespace CSLight
 {
-    public static void Main()
+    class Program
     {
-
-        bool program = true;
-        int[] numbers = new int[1];
-        int sum = 0;
-
-
-        while (program)
+        static void Main(string[] args)
         {
-            for (int i = 0; i < numbers.Length; i++)
+            bool programIsRunning = true;
+            int[] numbers = new int[0];
+            
+
+            int sum = 0;
+            int index = 0;
+
+            while (programIsRunning)
             {
-                
                 Console.Write("Command - ");
                 string userInput = Console.ReadLine();
 
 
                 if (userInput == "exit")
                 {
-                    //Environment.Exit(0);
-                    program = false;
+                    programIsRunning = false;
                     break;
                 }
                 else if (userInput == "sum")
                 {
-                    for (int j = 0; j < numbers.Length; j++)
-                    {
-                        sum += numbers[j];
-                        
-
-                    }
-                    Console.WriteLine("sum = " + sum);
+                    Console.Write("Sum - " + sum);
                     Console.ReadKey();
                     Console.Clear();
+                    sum = 0;
                 }
 
                 else
                 {
-                    int[] tempNumbers = new int[numbers.Length + 1];
-                    //tempNumbers = numbers;
-                    for (int x = 0; x < numbers.Length; x++)
-                    {
-                        tempNumbers[x] = numbers[x];
-                    }
-                    numbers[i] = Convert.ToInt32(userInput);
-                    tempNumbers[i] = numbers[i];
-                    numbers = tempNumbers;
-                }
 
+                    int[] tempNumbers = new int[numbers.Length + 1];
+                    tempNumbers[index] = Convert.ToInt32(userInput);
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        tempNumbers[i] = numbers[i];
+                    }
+                    numbers = tempNumbers;
+
+                    sum = sum + Convert.ToInt32(userInput);
+
+                    index++;
+                }
             }
         }
     }
- }
+}
