@@ -10,46 +10,32 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            bool programIsRunning = true;
+
             int[] numbers = new int[0];
-            
+            string userInput = null;
 
             int sum = 0;
-            int index = 0;
 
-            while (programIsRunning)
+            while (userInput != "exit")
             {
+
                 Console.Write("Command - ");
-                string userInput = Console.ReadLine();
+                userInput = Console.ReadLine();
 
-
-                if (userInput == "exit")
-                {
-                    programIsRunning = false;
-                    break;
+                if (userInput == "sum")
+                {                  
+                    Console.WriteLine("Sum - " + sum);                    
                 }
-                else if (userInput == "sum")
-                {
-                    Console.Write("Sum - " + sum);
-                    Console.ReadKey();
-                    Console.Clear();
-                    sum = 0;
-                }
-
                 else
                 {
-
+                    int numbersInput = Convert.ToInt32(userInput);
                     int[] tempNumbers = new int[numbers.Length + 1];
-                    tempNumbers[index] = Convert.ToInt32(userInput);
+                    
                     for (int i = 0; i < numbers.Length; i++)
                     {
                         tempNumbers[i] = numbers[i];
                     }
-                    numbers = tempNumbers;
-
-                    sum = sum + Convert.ToInt32(userInput);
-
-                    index++;
+                    sum += numbersInput;
                 }
             }
         }
