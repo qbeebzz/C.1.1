@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+                        
+            int[] numbers = new int[0];
+            string userInput = null;
+
+            int sum = 0;
+
+            while (userInput != "exit")
+            {
+             
+                Console.Write("Command - ");
+                userInput = Console.ReadLine();
+
+                if (userInput == "sum")
+                {
+                    /*for (int i = 0; i < numbers.Length; i++)
+                    {
+                        sum += numbers[i];
+                    }*/              
+                    
+                    Console.Write("Sum - " + sum);
+                    Console.ReadKey();
+                    Console.Clear();
+                    sum = 0;
+                }
+
+                
+                else
+                {
+                    int numbersInput = Convert.ToInt32(userInput);
+                    int[] tempNumbers = new int[numbers.Length + 1];
+                    tempNumbers[0] = numbersInput;
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        tempNumbers[i] = numbers[i];
+                    }
+                    numbers = tempNumbers;
+
+                    sum += numbersInput;                   
+                }
+                
+            }          
+        }
+    }
+}
