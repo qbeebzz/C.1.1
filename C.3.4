@@ -23,20 +23,22 @@ namespace CSLight
                 userInput = Console.ReadLine();
 
                 if (userInput == "sum")
-                {                  
-                    Console.WriteLine("Sum - " + sum);                    
+                {
+                    Console.WriteLine("Sum - " + sum);
                 }
-                else
+                else if (userInput!="exit")
                 {
                     int numbersInput = Convert.ToInt32(userInput);
                     int[] tempNumbers = new int[numbers.Length + 1];
-                    
+
                     for (int i = 0; i < numbers.Length; i++)
                     {
                         tempNumbers[i] = numbers[i];
                     }
-                    sum += numbersInput;
-                }
+                    tempNumbers[tempNumbers.Length - 1] = numbersInput;
+                    sum += numbersInput;  
+                   
+                }               
             }
         }
     }
