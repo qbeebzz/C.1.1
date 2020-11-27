@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSLight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int health = 0;
+            int mana = 0;
+            
+
+
+            while (true)
+            {
+                DrawBar(health, ConsoleColor.Red,0, '_');
+                DrawBar(mana, ConsoleColor.Blue,1,'_');
+                
+                Console.SetCursorPosition(0, 5);
+                Console.Write("Enter amount of health - ");
+                health = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter amount of mana - ");
+                mana = Convert.ToInt32(Console.ReadLine());
+
+                Console.ReadKey();
+                Console.Clear();
+                
+            }
+          
+        }
+
+        static void DrawBar(int value, ConsoleColor color, int position, char symbol = ' ')
+        {
+            ConsoleColor defaultColor = Console.BackgroundColor;
+            string bar = "";
+            int a = value / 10;
+
+            for (int i = 0; i < a; i++)
+            {
+                bar += ' ';
+            }
+
+            Console.SetCursorPosition(0, position);
+            Console.Write('[');
+            Console.BackgroundColor = color;
+            Console.Write(bar);
+            Console.BackgroundColor = defaultColor;
+
+            bar = "";
+
+            for (int i = 0; i < (10 - a); i++)
+            {
+                bar += symbol;
+            }
+            Console.Write(bar + ']');
+        }
+    }
+}
